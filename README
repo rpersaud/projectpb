@@ -1,0 +1,26 @@
+Project PB 
+==========
+
+This is a mobile app using the Corona SDK and will be open-sourced during beta
+for quality assurance. Licensing is TBD on what code is permissable for re-use.
+
+INSTALLATION
+============
+
+Open using the Corona SDK Simulator. Open the file directory, select the
+device to build for, and pick the main.lua file to start it up.
+
+REQUIREMENTS
+============
+
+Version 2011.591 (2011.8.2) of the Corona Simulator on either Mac OS X 10.6+,
+or windows 7+. 
+
+WHAT'S NEXT
+===========
+
+Visit gamengineers.com/projectpb for more details, development roadmaps, 
+support, and feedback. 
+
+Robert Persaud
+http://www.gamengineers.com
