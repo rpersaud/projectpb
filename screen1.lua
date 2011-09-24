@@ -15,18 +15,21 @@ new = function ( params )
 		
 	-- Display Objects
 	local background = display.newImage( "bg1.jpg" )
+	localGroup:insert(background)
 	
 	-- Create static ground to impact falling objects
 	local floor = display.newRect( 0, 602, 960, 1)
+	localGroup:insert(floor)
 	floor:setReferencePoint(display.CenterReferencePoint)
 	floor.isVisible = false
 	--floor.isHitTestable = true
 	physics.addBody(floor, "static", {friction=0.5})
 	
-	local bombs = {}
+	local targets = {}
 	for i = 1, 5 do
-        bombs[i] = display.newImage("penguin.png", math.random(960), 550)
-        physics.addBody(bombs[i], { density=0.2, friction=0.1, bounce=0.5})
+        targets[i] = display.newImage("penguin.png", math.random(960), 550)
+        localGroup:insert(targets[i])
+        physics.addBody(targets[i], { density=0.2, friction=0.1, bounce=0.5})
 	end
 		
 	-- Apply force to any objects that come into contact w/ touch radius
@@ -35,9 +38,9 @@ new = function ( params )
 	       local forcex = event.other.x-self.x
 	       local forcey = event.other.y-self.y-20
 	       if (forcex < 0) then
-	           forcex = 0 - (80 + forcex) - 12
+	           forcex = 0 - (180 + forcex) - 12
 	       else
-	           forcex = 80 - forcex + 12
+	           forcex = 180 - forcex + 12
 	       end
 	       event.other:applyForce(forcex, forcey, self.x, self.y)
 	   end
@@ -46,22 +49,24 @@ new = function ( params )
 	local circle = ""
 	local function setBomb (event)
 	   if (event.phase == "began") then
-	       circle = display.newCircle(event.x, event.y, 80)
+	       circle = display.newCircle(event.x, event.y, 20)
+	       localGroup:insert(circle)
 	       circle.myName = "circle"
 	       circle:setFillColor(255,255,255,100)
-	       physics:addBody(circle, "statics", {isSensor = true})
+	       physics.addBody(circle, {isSensor = true})
 	       circle.collision = onLocalCollision
 	       circle:addEventListener("collision", circle)
 	    end
         if (event.phase =="ended") then
             circle:removeSelf()
+            localGroup:remove(circle)
         end
 	end
 	background:addEventListener("touch", setBomb)
 	
 	-- Add objects to display
-	localGroup:insert(background)
-	localGroup:insert(floor)	
+	--localGroup:insert(background)
+	--localGroup:insert(floor)	
 	
 	--[[
 	local title      = display.newText( "Director Class", 0, 0, native.systemFontBold, 16 )
