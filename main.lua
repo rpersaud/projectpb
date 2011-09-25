@@ -25,6 +25,9 @@ physics.start()
 _W = display.contentWidth
 _H = display.contentHeight
 
+-- Setup sound
+local media = require("media")
+
 -- Create a main group
 local mainGroup = display.newGroup()
 
