@@ -2,7 +2,7 @@ application
 {
     content =
     {
-        -- iPhone4 resolutions; iPhone2/3 used 320x480
+        -- iPhone4 resolutions; iPhone 2/3 used 320x480
         width = 960,
         height = 640,
         scale = "letterbox",
@@ -24,5 +24,4 @@ application
         },
     },
 }
-
 -- see http://bit.ly/r1xU9C
