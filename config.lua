@@ -3,6 +3,7 @@ application
     content =
     {
         -- iPhone4 resolutions; iPhone 2/3 used 320x480
+        -- Possible design option to scale dimensions dynamically
         width = 960,
         height = 640,
         scale = "letterbox",
